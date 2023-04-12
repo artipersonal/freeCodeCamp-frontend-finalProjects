@@ -13,28 +13,30 @@ const App = () => {
       'X-RapidAPI-Host': 'quotes-villa.p.rapidapi.com'
     }
   };
-
+  let firstLaunch = true;
+  const getQuoteCode = () => {
+    fetch('https://quotes-villa.p.rapidapi.com/quotes/inspirational', options)
+      .then(response => response.json())
+      .then(response => {
+        let nquote = response[Math.floor(Math.random() * 2999)];
+        while (nquote.text.length >= 250) {
+          nquote = response[Math.floor(Math.random() * 2999)];
+        }
+        nquote.text = nquote.text.replace("\“", "");
+        nquote.text = nquote.text.replace("\”", "");
+        nquote.author = nquote.author.replace(",", "");
+        setQuote(nquote);
+      })
+      .catch(err => console.error(err));
+  }
   const getQuote = () => {
     setTimeout(function () {
-      console.log("making animation...");
-      fetch('https://quotes-villa.p.rapidapi.com/quotes/inspirational', options)
-        .then(response => response.json())
-        .then(response => {
-          let nquote = response[Math.floor(Math.random() * 2999)];
-          while (nquote.text.length >= 250) {
-            nquote = response[Math.floor(Math.random() * 2999)];
-          }
-          nquote.text = nquote.text.replace("\“", "");
-          nquote.text = nquote.text.replace("\”", "");
-          nquote.author = nquote.author.replace(",", "");
-          setQuote(nquote);
-        })
-        .catch(err => console.error(err));
+      getQuoteCode()
     }, 1500);
   }
 
   useEffect(() => {
-    getQuote();
+    getQuoteCode();
   }, []);
 
   const newColor = {
