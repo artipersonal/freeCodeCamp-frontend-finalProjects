@@ -1,11 +1,17 @@
 import { useState, useEffect } from 'react';
 import parse from 'html-react-parser';
 import { marked } from 'marked';
+import 'highlight.js/styles/monokai.css';
 import hljs from 'highlight.js/lib/core';
 import javascript from 'highlight.js/lib/languages/javascript';
 hljs.registerLanguage('javascript', javascript);
 
+
 function Reviewer(props) {
+
+  useEffect(() => {
+    hljs.highlightAll();
+  }, [props.input]);
 
   return (
     <div className="container" id="reviewer-container">
