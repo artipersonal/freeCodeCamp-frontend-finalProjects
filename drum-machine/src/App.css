@@ -1,0 +1,141 @@
+:root {
+  --back-buttons: rgb(128, 128, 128);
+}
+
+*,
+:before,
+:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#App {
+  width: 100%;
+  height: 100vh;
+  background-color: rgb(141, 141, 141);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#drum-machine {
+  width: 500px;
+  height: 250px;
+  background-color: rgb(179, 179, 179);
+  border: 5px solid rgb(243, 168, 59);
+}
+
+#display {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex;
+  height: 100%;
+}
+
+#buttons {
+  display: flex;
+  width: 250px;
+  margin: 20px 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.drum-pad {
+  width: 70px;
+  height: 60px;
+  margin: 3px;
+  border-radius: 4px;
+  font-weight: 700;
+  box-shadow: 1px 1px 3px black;
+  background-color: var(--back-buttons);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.drum-pad:hover {
+  cursor: pointer;
+}
+
+.active-off {
+  box-shadow: none;
+  font-size: 0.9rem;
+}
+
+.active-on {
+  background-color: rgb(243, 168, 59);
+  box-shadow: none;
+  font-size: 0.9rem;
+}
+
+#tuning {
+  height: 100%;
+  display: block;
+  margin: 0 auto;
+}
+
+#last-played {
+  width: 150px;
+  height: 40px;
+  background-color: var(--back-buttons);
+  font-weight: 800;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#logo {
+  font-weight: 800;
+  text-align: right;
+  position: relative;
+  left: 30px;
+}
+
+#power {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+#power p {
+  font-weight: 800;
+  text-align: center;
+}
+
+.tune-box {
+  background-color: black;
+  width: 60px;
+  height: 30px;
+  border: 4px solid black;
+  display: flex;
+}
+
+.regulator {
+  background-color: blue;
+  width: 45%;
+  height: 100%;
+}
+
+.tune-box-on {
+  justify-content: flex-start;
+}
+
+.tune-box-off {
+  justify-content: flex-end;
+}
+
+#volume {
+  width: 100%;
+}
+
+#volume-tuning p {
+  font-weight: 800;
+  text-align: center;
+  margin-top: 20px;
+}
