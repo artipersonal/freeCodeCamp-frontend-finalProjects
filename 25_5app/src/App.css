@@ -1,0 +1,141 @@
+*,
+:after,
+:before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#App {
+  background-color: rgb(45, 84, 91);
+  width: 100vw;
+  height: 100vh;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#container,
+#labels,
+#break-container,
+#break-label,
+#session-container,
+#session-label,
+#timer,
+#controls {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 5px;
+}
+
+#break-label,
+#session-label {
+  justify-content: center;
+}
+
+#break-container,
+#session-container,
+#labels {
+  flex-direction: row;
+}
+
+#break-container,
+#session-container {
+  width: 100px;
+  justify-content: center;
+}
+
+span {
+  width: 20px;
+  margin: 0 5px;
+  text-align: center;
+}
+
+#break-container button,
+#session-container button {
+  margin: 0px;
+  padding: 0;
+}
+
+
+#labels {
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+
+#container {
+  width: 300px;
+  height: 300px;
+}
+
+#header {
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: normal;
+}
+
+h1 {
+  font-size: 35px;
+}
+
+h2 {
+  font-size: 18px;
+}
+
+h3 {
+  font-size: 8px;
+  font-weight: bold;
+}
+
+#timer {
+  width: 180px;
+  height: 100px;
+  justify-content: center;
+  border: 5px solid rgb(28, 52, 57);
+  border-radius: 35px;
+}
+
+#footer {
+  text-align: center;
+}
+
+#time-left {
+  font-size: 40px;
+}
+
+button {
+  background-color: inherit;
+  border: none;
+  color: white;
+  margin: 0 10px;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+#controls {
+  justify-content: center;
+  flex-direction: row;
+}
+
+h3:first-of-type {
+  color: rgb(152, 34, 56);
+}
+
+h3:nth-of-type(2) {
+  color: rgb(17, 48, 78);
+}
+
+.red {
+  color: red;
+}
