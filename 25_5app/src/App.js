@@ -29,39 +29,32 @@ function App() {
       check.classList.remove("red");
       check2.classList.remove('red');
     }
-    if (timeNum.time < 0) {
-      if (timeNum.break) {
-        setTimeNum({ time: sessionLength * 60, status: true, break: false })
-      }
-      else {
-        setTimeNum({ time: breakLength * 60, status: true, break: true })
-      };
-      let aud = document.getElementById("beep");
-      aud.pause();
-      aud.currentTime = 0;
-      aud.play();
-      /*
-      setTimeNum((prevState) => {
-        if (prevState.break) {
-          return { time: sessionLength * 60, status: true, break: false }
-        }
-        else {
-          return { time: breakLength * 60, status: true, break: true }
-        }
-      })
-      */
-    }
+
   }, [timeNum.time]);
 
   const laucnhTimer = () => {
 
-    // if there is no timer - this mean we start our action or the previous action was completed
+    // if there is no timer - this means we start our action or the previous action was completed
     // EQUALS - we may action further
     if (!myTimeout.current) {
       myTimeout.current = setTimeout(() => {
         if (!timeNum.status) {
           myTimer.current = setInterval(() => {
-            setTimeNum((prevState) => ({ time: prevState.time - 1, status: true, break: prevState.break }));
+            setTimeNum((prevState) => {
+              if (prevState.time <= 0) {
+                let aud = document.getElementById("beep");
+                aud.play();
+                if (prevState.break) {
+                  return { time: sessionLength * 60, status: true, break: false }
+                }
+                else {
+                  return { time: breakLength * 60, status: true, break: true }
+                };
+              }
+              else {
+                return { time: prevState.time - 1, status: true, break: prevState.break }
+              }
+            });
 
           }, 1000);
         }
