@@ -20,22 +20,36 @@ function App() {
 
   useEffect(() => {
     let check = document.getElementById("time-left");
+    let check2 = document.getElementById('timer-label');
     if (!check.classList.contains("red") && (timeNum.time <= 59)) {
       check.classList.add("red");
+      check2.classList.add('red');
     }
     else if (timeNum.time > 59) {
       check.classList.remove("red");
+      check2.classList.remove('red');
     }
-    if (timeNum.time == 0) {
-      document.getElementById("beep").play();
+    if (timeNum.time < 0) {
+      if (timeNum.break) {
+        setTimeNum({ time: sessionLength * 60, status: true, break: false })
+      }
+      else {
+        setTimeNum({ time: breakLength * 60, status: true, break: true })
+      };
+      let aud = document.getElementById("beep");
+      aud.pause();
+      aud.currentTime = 0;
+      aud.play();
+      /*
       setTimeNum((prevState) => {
         if (prevState.break) {
-          return { time: sessionLength, status: true, break: false }
+          return { time: sessionLength * 60, status: true, break: false }
         }
         else {
-          return { time: breakLength, status: true, break: true }
+          return { time: breakLength * 60, status: true, break: true }
         }
       })
+      */
     }
   }, [timeNum.time]);
 
@@ -58,6 +72,9 @@ function App() {
 
   const handleReset = () => {
     clearInterval(myTimer.current);
+    let aud = document.getElementById("beep");
+    aud.pause();
+    aud.currentTime = 0;
     setTimeNum({ time: 1500, status: false, break: false });
     setBreakLength(5);
     setSessionLength(25);
