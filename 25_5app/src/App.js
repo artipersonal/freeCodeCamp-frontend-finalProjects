@@ -58,7 +58,7 @@ function App() {
 
           }, 1000);
         }
-      }, 100);
+      }, 300);
 
     }
   }
@@ -104,22 +104,20 @@ function App() {
             <div id="session-container">
               <button id="session-decrement" onClick={() => {
                 if (sessionLength > 1) {
+                  clearInterval(myTimer.current);
                   setSessionLength((state) => {
-                    clearInterval(myTimer.current);
-                    setTimeNum({ time: (state - 1) * 60, status: false, break: false });
                     return (state - 1)
-                  },)
+                  }, setTimeNum({ time: (sessionLength - 1) * 60, status: false, break: false }))
                 }
               }
               }><i className="fa-solid fa-arrow-down"></i></button>
               <span id="session-length">{sessionLength}</span>
               <button id="session-increment" onClick={() => {
                 if (sessionLength < 60) {
+                  clearInterval(myTimer.current);
                   setSessionLength((state) => {
-                    clearInterval(myTimer.current);
-                    setTimeNum({ time: (state + 1) * 60, status: false, break: false });
                     return (state + 1)
-                  },)
+                  }, setTimeNum({ time: (sessionLength + 1) * 60, status: false, break: false }))
                 }
               }
 
